@@ -1,0 +1,4 @@
+interface:
+  display_name: "Google-Inspired Editorial PPT"
+  short_description: "将商业PPT升级为克制、高级、杂志化的编辑设计系统"
+  default_prompt: "Use $google-inspired-editorial-ppt to restyle this PowerPoint while preserving its requested content and structure."
