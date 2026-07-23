@@ -1,0 +1,20 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Content inventory",
+  "type":"object",
+  "required":["sourceFile","slideCount","parserVersion","slides"],
+  "properties":{
+    "sourceFile":{"type":"string","minLength":1},
+    "slideCount":{"type":"integer","minimum":1},
+    "parserVersion":{"type":"string"},
+    "slides":{"type":"array","minItems":1,"items":{"type":"object","required":["sourceSlide","title","bodyBlocks","bullets","metrics","charts","tables","quotes","images","sources","speakerNotes","semanticRole","density","needsReview"],"properties":{
+      "sourceSlide":{"type":"integer","minimum":1},"title":{"type":"string"},"bodyBlocks":{"type":"array","items":{"type":"string"}},"bullets":{"type":"array","items":{"type":"string"}},
+      "metrics":{"type":"array","items":{"type":"object","required":["value"],"properties":{"value":{"type":"string"},"sourceText":{"type":"string"},"needsReview":{"type":"boolean"}},"additionalProperties":true}},
+      "charts":{"type":"array","items":{"type":"object","required":["type","series","recoverability"],"properties":{"type":{"type":"string"},"series":{"type":"array"},"recoverability":{"type":"string"}},"additionalProperties":true}},
+      "tables":{"type":"array","items":{"type":"object","required":["rows","rowCount","columnCount","recoverability"],"additionalProperties":true}},
+      "quotes":{"type":"array","items":{"type":"object","required":["text"],"properties":{"text":{"type":"string"},"attribution":{"type":"string"},"needsReview":{"type":"boolean"}},"additionalProperties":true}},
+      "images":{"type":"array","items":{"type":"object","required":["relationshipId","fileName","recoverability"],"additionalProperties":true}},"sources":{"type":"array","items":{"type":"string"}},"speakerNotes":{"type":"string"},
+      "semanticRole":{"enum":["cover","executive_summary","chapter_divider","explanation","framework","comparison","data_overview","single_chart","single_kpi","case_study","quote","risk","checklist","closing","unknown"]},"density":{"enum":["low","medium","high"]},"needsReview":{"type":"array","items":{"type":"string"}}
+    },"additionalProperties":true}}
+  },"additionalProperties":true
+}
