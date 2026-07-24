@@ -4,7 +4,7 @@
 
 ![Google-Inspired Editorial PPT 风格能力示意](docs/images/hero-moodboard.png)
 
-> 上图为风格能力示意。下方案例图来自该 Skill 的真实 PPTX 渲染结果。
+> 上图为风格能力示意。
 
 ## 能做什么
 
