@@ -21,26 +21,6 @@
 
 以下图片展示同一套设计系统能够覆盖的不同页面任务。
 
-### 图片主导的封面
-
-![图片主导的企业编辑风封面](docs/images/example-cover.png)
-
-### 杂志式章节页
-
-![带连续渐变氛围的章节页](docs/images/example-editorial-section.png)
-
-### 流程与信息卡片
-
-![轻量信息卡片和流程布局](docs/images/example-process-cards.png)
-
-### 长文本与观点页
-
-![大留白长文本编辑版式](docs/images/example-longform-layout.png)
-
-### 深色电影感章节
-
-![深色电影感章节页](docs/images/example-dark-cinematic.png)
-
 ## 三种工作模式
 
 ### `visual_only`
