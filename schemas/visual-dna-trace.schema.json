@@ -1,0 +1,11 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Planner 5.0 Visual DNA trace",
+  "type":"object",
+  "required":["plannerVersion","pages"],
+  "properties":{
+    "plannerVersion":{"type":"string","pattern":"^5\\."},
+    "pages":{"type":"array","minItems":1,"items":{"type":"object","required":["page","narrative_job","audience_effect","evidence_topology","art_direction","motif","composition","template","asset","neighbor_difference"],"properties":{"page":{"type":"integer","minimum":1},"narrative_job":{"type":"string"},"audience_effect":{"type":"string"},"evidence_topology":{"type":"object"},"art_direction":{"type":"object"},"motif":{"type":"object"},"composition":{"type":"object"},"template":{"type":"object"},"asset":{"type":"object"},"neighbor_difference":{"type":"array"}},"additionalProperties":true}}
+  },
+  "additionalProperties":true
+}

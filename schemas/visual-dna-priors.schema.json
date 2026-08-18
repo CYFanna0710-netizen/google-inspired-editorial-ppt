@@ -1,0 +1,12 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Visual DNA reference priors",
+  "type":"object",
+  "required":["version","policy","priors"],
+  "properties":{
+    "version":{"type":"string"},
+    "policy":{"type":"object","required":["enforcement","fallbackHierarchy","hardFailureFromNumericDeviation"]},
+    "priors":{"type":"array","minItems":1,"items":{"type":"object","required":["id","metric","conditions","sample","distribution"],"properties":{"id":{"type":"string"},"metric":{"type":"string"},"conditions":{"type":"object"},"sample":{"type":"object"},"distribution":{"type":"object"}},"additionalProperties":true}}
+  },
+  "additionalProperties":true
+}

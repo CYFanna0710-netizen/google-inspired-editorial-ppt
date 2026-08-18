@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "template-capability-manifest.schema.json",
+  "title": "Template Capability Manifest",
+  "type": "object",
+  "required": ["manifest_version", "source_template", "selection_policy", "templates"],
+  "properties": {
+    "manifest_version": {"const": "6.0-mvp-1"},
+    "source_template": {
+      "type": "object",
+      "required": ["file", "sha256", "slide_count", "inheritance_model"],
+      "properties": {
+        "file": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "slide_count": {"const": 23},
+        "inheritance_model": {"const": "slide-local objects; empty master and layout"}
+      }
+    },
+    "selection_policy": {"const": "visual_concept_then_required_capabilities_then_template_match"},
+    "templates": {"type": "array", "minItems": 23, "maxItems": 23, "items": {"$ref": "#/$defs/template"}}
+  },
+  "$defs": {
+    "scale": {
+      "type": "object",
+      "required": ["supports_oversized_text", "supports_oversized_number", "supports_dominant_visual"],
+      "properties": {
+        "supports_oversized_text": {"type": "boolean"},
+        "supports_oversized_number": {"type": "boolean"},
+        "supports_dominant_visual": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "spatial": {
+      "type": "object",
+      "required": ["supports_asymmetry", "supports_area_encoding", "supports_overlap", "supports_fusion", "supports_partition", "supports_sequence"],
+      "properties": {
+        "supports_asymmetry": {"type": "boolean"},
+        "supports_area_encoding": {"type": "boolean"},
+        "supports_overlap": {"type": "boolean"},
+        "supports_fusion": {"type": "boolean"},
+        "supports_partition": {"type": "boolean"},
+        "supports_sequence": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "template": {
+      "type": "object",
+      "required": ["template_id", "source_slide", "layout_role", "communication_intents", "supported_semantic_relationships", "supported_visual_actions", "hero_object_capabilities", "scale_capabilities", "spatial_capabilities", "color_energy_range", "data_capabilities", "editable_regions", "fixed_regions", "renderer_requirements", "recommended_use", "avoid_when", "failure_risks", "confidence", "evidence_status"],
+      "properties": {
+        "template_id": {"type": "string", "pattern": "^T(?:0[1-9]|1[0-9]|2[0-3])$"},
+        "source_slide": {"type": "integer", "minimum": 1, "maximum": 23},
+        "layout_role": {"type": "string", "minLength": 1},
+        "communication_intents": {"type": "array", "items": {"type": "string"}},
+        "supported_semantic_relationships": {"type": "array", "items": {"type": "string"}},
+        "supported_visual_actions": {"type": "array", "items": {"type": "string"}},
+        "hero_object_capabilities": {"type": "array", "items": {"type": "string"}},
+        "scale_capabilities": {"$ref": "#/$defs/scale"},
+        "spatial_capabilities": {"$ref": "#/$defs/spatial"},
+        "color_energy_range": {"type": "array", "minItems": 1, "items": {"enum": ["low", "medium_low", "medium", "medium_high", "high"]}},
+        "data_capabilities": {"type": "array", "items": {"type": "string"}},
+        "editable_regions": {"type": "array", "items": {"type": "string"}},
+        "fixed_regions": {"type": "array", "items": {"type": "string"}},
+        "renderer_requirements": {"type": "array", "items": {"type": "string"}},
+        "recommended_use": {"type": "array", "items": {"type": "string"}},
+        "avoid_when": {"type": "array", "items": {"type": "string"}},
+        "failure_risks": {"type": "array", "items": {"type": "string"}},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "evidence_status": {"enum": ["COMPUTED_AND_VISUALLY_CONFIRMED", "INFERRED_FROM_STRUCTURE"]}
+      },
+      "additionalProperties": false
+    }
+  }
+}

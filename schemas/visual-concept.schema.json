@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "visual-concept.schema.json",
+  "title": "Planner 6.0 Visual Concept Intelligence MVP",
+  "type": "object",
+  "required": ["schemaVersion", "plannerVersion", "basePlannerVersion", "architectureInsertion", "scope", "pages"],
+  "properties": {
+    "schemaVersion": {"const": "6.0-mvp"},
+    "plannerVersion": {"const": "6.0-visual-concept-intelligence-mvp"},
+    "basePlannerVersion": {"type": "string", "pattern": "^5\\."},
+    "architectureInsertion": {"const": "Evidence Topology -> Visual Concept Intelligence -> Art Direction"},
+    "scope": {
+      "type": "object",
+      "required": ["planner5Mutated", "rendererModified", "pptxGenerated", "candidateCountPerPage"],
+      "properties": {
+        "planner5Mutated": {"const": false},
+        "rendererModified": {"const": false},
+        "pptxGenerated": {"const": false},
+        "candidateCountPerPage": {"const": 3}
+      },
+      "additionalProperties": false
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/page"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "testResult": {
+      "type": "object",
+      "required": ["result", "reason"],
+      "properties": {
+        "result": {"enum": ["pass", "review", "fail"]},
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "score": {
+      "type": "object",
+      "required": ["semantic_fit", "relationship_encoding", "hero_clarity", "scale_contrast", "color_function", "whitespace_counterforce", "neighbor_difference", "execution_feasibility", "penalties", "total"],
+      "properties": {
+        "semantic_fit": {"type": "number", "minimum": 0, "maximum": 25},
+        "relationship_encoding": {"type": "number", "minimum": 0, "maximum": 20},
+        "hero_clarity": {"type": "number", "minimum": 0, "maximum": 15},
+        "scale_contrast": {"type": "number", "minimum": 0, "maximum": 10},
+        "color_function": {"type": "number", "minimum": 0, "maximum": 10},
+        "whitespace_counterforce": {"type": "number", "minimum": 0, "maximum": 10},
+        "neighbor_difference": {"type": "number", "minimum": 0, "maximum": 5},
+        "execution_feasibility": {"type": "number", "minimum": 0, "maximum": 5},
+        "penalties": {"type": "array", "items": {"type": "object", "required": ["code", "points", "reason"]}},
+        "total": {"type": "number", "minimum": 0, "maximum": 100}
+      },
+      "additionalProperties": false
+    },
+    "candidate": {
+      "type": "object",
+      "required": ["id", "grammar_id", "name", "communication_goal", "core_tension", "visual_metaphor", "hero_object", "visual_gesture", "scale_strategy", "color_energy", "whitespace_role", "semantic_encoding", "memorable_moment", "do_not", "tests", "score"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^p[0-9]{2}-c[1-3]$"},
+        "grammar_id": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1},
+        "communication_goal": {"type": "string", "minLength": 1},
+        "core_tension": {"type": "string", "minLength": 1},
+        "visual_metaphor": {"type": "string", "minLength": 1},
+        "hero_object": {
+          "type": "object",
+          "required": ["kind", "label", "semantic_link", "presence"],
+          "properties": {
+            "kind": {"type": "string", "minLength": 1},
+            "label": {"type": "string", "minLength": 1},
+            "semantic_link": {"type": "string", "minLength": 1},
+            "presence": {"const": "required"}
+          },
+          "additionalProperties": false
+        },
+        "visual_gesture": {"type": "string", "minLength": 1},
+        "scale_strategy": {
+          "type": "object",
+          "required": ["mode", "constraints"],
+          "properties": {
+            "mode": {"type": "string", "minLength": 1},
+            "constraints": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+          },
+          "additionalProperties": false
+        },
+        "color_energy": {
+          "type": "object",
+          "required": ["role", "level", "semantic_use"],
+          "properties": {
+            "role": {"type": "string", "minLength": 1},
+            "level": {"enum": ["low", "medium_low", "medium", "medium_high", "high"]},
+            "semantic_use": {"type": "string", "minLength": 1}
+          },
+          "additionalProperties": false
+        },
+        "whitespace_role": {
+          "type": "object",
+          "required": ["function", "counterforce", "intentional"],
+          "properties": {
+            "function": {"type": "string", "minLength": 1},
+            "counterforce": {"type": "string", "minLength": 1},
+            "intentional": {"const": true}
+          },
+          "additionalProperties": false
+        },
+        "semantic_encoding": {
+          "type": "object",
+          "required": ["data_dimension", "visual_channel", "relationship"],
+          "properties": {
+            "data_dimension": {"type": "string", "minLength": 1},
+            "visual_channel": {"type": "string", "minLength": 1},
+            "relationship": {"type": "string", "minLength": 1}
+          },
+          "additionalProperties": false
+        },
+        "memorable_moment": {"type": "string", "minLength": 1},
+        "do_not": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "tests": {
+          "type": "object",
+          "required": ["concept_removal", "hero", "non_isomorphic", "semantic_encoding", "memorable_moment"],
+          "properties": {
+            "concept_removal": {"$ref": "#/$defs/testResult"},
+            "hero": {"$ref": "#/$defs/testResult"},
+            "non_isomorphic": {"$ref": "#/$defs/testResult"},
+            "semantic_encoding": {"$ref": "#/$defs/testResult"},
+            "memorable_moment": {"$ref": "#/$defs/testResult"}
+          },
+          "additionalProperties": false
+        },
+        "score": {"$ref": "#/$defs/score"}
+      },
+      "additionalProperties": false
+    },
+    "page": {
+      "type": "object",
+      "required": ["page", "source_slides", "core_claim", "analysis", "base_state", "candidates", "selected_candidate_id", "selection"],
+      "properties": {
+        "page": {"type": "integer", "minimum": 1},
+        "source_slides": {"type": "array", "minItems": 1, "items": {"type": "integer", "minimum": 1}},
+        "core_claim": {"type": "string", "minLength": 1},
+        "analysis": {
+          "type": "object",
+          "required": ["signal", "confidence", "evidence", "ratio_values", "ordered_item_count"],
+          "properties": {
+            "signal": {"enum": ["ratio_composition", "process_transformation", "contrast_translation", "thesis_emphasis"]},
+            "confidence": {"enum": ["high", "medium", "low"]},
+            "evidence": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+            "ratio_values": {"type": "array", "items": {"type": "number", "minimum": 0, "maximum": 100}},
+            "ordered_item_count": {"type": "integer", "minimum": 0}
+          },
+          "additionalProperties": false
+        },
+        "base_state": {"type": "object", "required": ["planner_version", "template_id", "energy", "gravity", "focal_point", "color_role"]},
+        "candidates": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"$ref": "#/$defs/candidate"}},
+        "selected_candidate_id": {"type": "string", "pattern": "^p[0-9]{2}-c[1-3]$"},
+        "selection": {
+          "type": "object",
+          "required": ["method", "winning_score", "reason", "requires_human_review"],
+          "properties": {
+            "method": {"const": "highest_weighted_score"},
+            "winning_score": {"type": "number", "minimum": 0, "maximum": 100},
+            "reason": {"type": "string", "minLength": 1},
+            "requires_human_review": {"const": true}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "mapping_version": "6.0-mvp-1",
+  "selection_policy": "visual_concept_then_required_capabilities_then_template_match",
+  "mappings": [
+    {
+      "visual_grammar_id": "ratio-proportional-fields",
+      "compatible_templates": [],
+      "conditionally_compatible_templates": ["T09", "T12", "T13", "T14", "T17", "T18"],
+      "incompatible_templates": ["T01", "T02", "T03", "T04", "T05", "T06", "T07", "T08", "T10", "T11", "T15", "T16", "T19", "T20", "T21", "T22", "T23"],
+      "required_transformations": ["Replace equal-width regions with data-bound widths", "Preserve labels and sources outside the encoded field", "Make the combined field the single Hero Object"],
+      "unresolved_renderer_gaps": ["No primitive supports truthful 60/25/15 area partition", "No primitive supports semantic fusion of unequal fields"]
+    },
+    {
+      "visual_grammar_id": "ratio-weighted-convergence",
+      "compatible_templates": [],
+      "conditionally_compatible_templates": ["T07", "T13", "T18", "T23"],
+      "incompatible_templates": ["T01", "T02", "T03", "T04", "T05", "T06", "T08", "T09", "T10", "T11", "T12", "T14", "T15", "T16", "T17", "T19", "T20", "T21", "T22"],
+      "required_transformations": ["Construct unequal stream widths from data", "Create one convergence node", "Reserve traceable whitespace around the merge path"],
+      "unresolved_renderer_gaps": ["No native weighted-stream primitive", "No editable semantic convergence object"]
+    },
+    {
+      "visual_grammar_id": "ratio-weighted-orbit",
+      "compatible_templates": [],
+      "conditionally_compatible_templates": ["T07", "T20", "T23"],
+      "incompatible_templates": ["T01", "T02", "T03", "T04", "T05", "T06", "T08", "T09", "T10", "T11", "T12", "T13", "T14", "T15", "T16", "T17", "T18", "T19", "T21", "T22"],
+      "required_transformations": ["Bind radius and distance to influence", "Add a dominant anchor and a resolved output", "Avoid decorative circle styling"],
+      "unresolved_renderer_gaps": ["No data-bound radius-distance system", "No semantic orbit or locking behavior"]
+    },
+    {
+      "visual_grammar_id": "process-progressive-compression",
+      "compatible_templates": [],
+      "conditionally_compatible_templates": ["T05", "T06", "T09", "T12", "T16", "T22"],
+      "incompatible_templates": ["T01", "T02", "T03", "T04", "T07", "T08", "T10", "T11", "T13", "T14", "T15", "T17", "T18", "T19", "T20", "T21", "T23"],
+      "required_transformations": ["Replace equal steps with progressively changing widths", "Grow the final resolved artifact", "Use whitespace to encode discarded possibilities"],
+      "unresolved_renderer_gaps": ["No progressive narrowing primitive", "No increasing-resolution process geometry"]
+    },
+    {
+      "visual_grammar_id": "process-artifact-morphology",
+      "compatible_templates": [],
+      "conditionally_compatible_templates": ["T09", "T12", "T14", "T19"],
+      "incompatible_templates": ["T01", "T02", "T03", "T04", "T05", "T06", "T07", "T08", "T10", "T11", "T13", "T15", "T16", "T17", "T18", "T20", "T21", "T22", "T23"],
+      "required_transformations": ["Replace independent cards with a persistent editable artifact", "Encode each state by visible structural change", "Retain accumulated output across stages"],
+      "unresolved_renderer_gaps": ["No persistent evolving-artifact primitive", "No morphology transition rules"]
+    },
+    {
+      "visual_grammar_id": "process-unfolding-system",
+      "compatible_templates": [],
+      "conditionally_compatible_templates": ["T05", "T09", "T12", "T14", "T22"],
+      "incompatible_templates": ["T01", "T02", "T03", "T04", "T06", "T07", "T08", "T10", "T11", "T13", "T15", "T16", "T17", "T18", "T19", "T20", "T21", "T23"],
+      "required_transformations": ["Use non-equal panels", "Make the final panel dominant", "Show inheritance across revealed stages"],
+      "unresolved_renderer_gaps": ["No semantic fold or reveal primitive", "No integrated final-panel behavior"]
+    },
+    {
+      "visual_grammar_id": "contrast-barrier-opening",
+      "compatible_templates": [],
+      "conditionally_compatible_templates": ["T04", "T11", "T21", "T23"],
+      "incompatible_templates": ["T01", "T02", "T03", "T05", "T06", "T07", "T08", "T09", "T10", "T12", "T13", "T14", "T15", "T16", "T17", "T18", "T19", "T20", "T22"],
+      "required_transformations": ["Build a semantic barrier", "Cut an opening through the barrier", "Place the preferred statement at the opening"],
+      "unresolved_renderer_gaps": ["No editable occlusion-opening action", "No semantic negative-space release primitive"]
+    },
+    {
+      "visual_grammar_id": "contrast-overwrite-translation",
+      "compatible_templates": [],
+      "conditionally_compatible_templates": ["T01", "T07", "T10", "T11", "T21", "T23"],
+      "incompatible_templates": ["T02", "T03", "T04", "T05", "T06", "T08", "T09", "T12", "T13", "T14", "T15", "T16", "T17", "T18", "T19", "T20", "T22"],
+      "required_transformations": ["Retain obsolete wording as evidence", "Add a dominant cross-canvas translation layer", "Make the replacement statement the focal object"],
+      "unresolved_renderer_gaps": ["No semantic overwrite primitive", "No editable old-to-new layer action"]
+    },
+    {
+      "visual_grammar_id": "contrast-strike-replace",
+      "compatible_templates": [],
+      "conditionally_compatible_templates": ["T01", "T07", "T10", "T23"],
+      "incompatible_templates": ["T02", "T03", "T04", "T05", "T06", "T08", "T09", "T11", "T12", "T13", "T14", "T15", "T16", "T17", "T18", "T19", "T20", "T21", "T22"],
+      "required_transformations": ["Create one high-energy interruption gesture", "Anchor the new statement at the break point", "Keep the rejected statement legible"],
+      "unresolved_renderer_gaps": ["No semantic strike-and-replace primitive", "No editable directional interruption behavior"]
+    },
+    {
+      "visual_grammar_id": "thesis-typographic-field",
+      "compatible_templates": ["T01", "T07", "T23"],
+      "conditionally_compatible_templates": ["T06", "T10", "T20"],
+      "incompatible_templates": ["T02", "T03", "T04", "T05", "T08", "T09", "T11", "T12", "T13", "T14", "T15", "T16", "T17", "T18", "T19", "T21", "T22"],
+      "required_transformations": ["Use headline scale as the primary spatial object", "Place support in the headline's negative space", "Preserve a single focal statement"],
+      "unresolved_renderer_gaps": []
+    },
+    {
+      "visual_grammar_id": "thesis-semantic-axis",
+      "compatible_templates": [],
+      "conditionally_compatible_templates": ["T11", "T13", "T18", "T21"],
+      "incompatible_templates": ["T01", "T02", "T03", "T04", "T05", "T06", "T07", "T08", "T09", "T10", "T12", "T14", "T15", "T16", "T17", "T19", "T20", "T22", "T23"],
+      "required_transformations": ["Create unequal argument poles", "Bind distance to semantic tension", "Make the resolved endpoint dominant"],
+      "unresolved_renderer_gaps": ["No semantic axis primitive", "Existing splits default to balanced rather than decisive"]
+    },
+    {
+      "visual_grammar_id": "thesis-evidence-carveout",
+      "compatible_templates": [],
+      "conditionally_compatible_templates": ["T13", "T18", "T20"],
+      "incompatible_templates": ["T01", "T02", "T03", "T04", "T05", "T06", "T07", "T08", "T09", "T10", "T11", "T12", "T14", "T15", "T16", "T17", "T19", "T21", "T22", "T23"],
+      "required_transformations": ["Make the claim a continuous field", "Carve the evidence opening from that field", "Bind figure-ground geometry to proof priority"],
+      "unresolved_renderer_gaps": ["No editable figure-ground carveout primitive", "Existing evidence cards float beside rather than open inside the claim"]
+    }
+  ]
+}

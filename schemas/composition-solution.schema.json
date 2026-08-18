@@ -1,0 +1,24 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Planner 5.0 composition solution",
+  "type":"object",
+  "required":["coordinate_space","primary_focal_bbox","secondary_focal_bbox","headline_bbox","evidence_bbox","content_cluster_bbox","intentional_empty_zone_bbox","asset_anchor","asset_visible_region","dominant_object_scale","edge_entry","overlap_behavior","relative_spacing_relationships","tolerances","solver_status"],
+  "properties":{
+    "coordinate_space":{"enum":["normalized_canvas"]},
+    "primary_focal_bbox":{"type":"array","minItems":4},
+    "secondary_focal_bbox":{"type":"array","minItems":4},
+    "headline_bbox":{"type":"array","minItems":4},
+    "evidence_bbox":{"type":"array","minItems":4},
+    "content_cluster_bbox":{"type":"array","minItems":4},
+    "intentional_empty_zone_bbox":{"type":"array","minItems":4},
+    "asset_anchor":{"type":"object"},
+    "asset_visible_region":{"type":"array","minItems":4},
+    "dominant_object_scale":{"type":"number","minimum":0},
+    "edge_entry":{"type":"string"},
+    "overlap_behavior":{"type":"object"},
+    "relative_spacing_relationships":{"type":"array"},
+    "tolerances":{"type":"object"},
+    "solver_status":{"enum":["feasible","needs_content_replan"]}
+  },
+  "additionalProperties":true
+}
