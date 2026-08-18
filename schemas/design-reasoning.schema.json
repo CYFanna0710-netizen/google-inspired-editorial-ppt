@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Planner 5.0 design reasoning",
+  "type":"object",
+  "required":["audience_effect","energy","focal_structure","reading_path","gravity","visual_mass_intent","intentional_empty_zone","whitespace_intention","tension","neighbor_difference"],
+  "properties":{
+    "audience_effect":{"type":"string","minLength":1},
+    "energy":{"enum":["quiet","moderate","energetic","climax"]},
+    "focal_structure":{"type":"object","required":["primary","secondary"],"properties":{"primary":{"type":"string","minLength":1},"secondary":{"type":"array","items":{"type":"string"}}}},
+    "reading_path":{"type":"array","minItems":1,"items":{"type":"string"}},
+    "gravity":{"type":"string","minLength":1},
+    "visual_mass_intent":{"type":"object","required":["center_of_mass","quadrant_mass","dominant_zone","counterweight"],"properties":{"center_of_mass":{"type":"object"},"quadrant_mass":{"type":"object"},"dominant_zone":{"type":"string"},"counterweight":{"type":"object"}}},
+    "intentional_empty_zone":{"type":"object","required":["preferred_zone","functions"],"properties":{"preferred_zone":{"type":"string"},"functions":{"type":"array","minItems":1,"items":{"type":"string"}}}},
+    "whitespace_intention":{"type":"string","minLength":1},
+    "tension":{"type":"string","minLength":1},
+    "neighbor_difference":{"type":"array","items":{"type":"string"}}
+  },
+  "additionalProperties":true
+}

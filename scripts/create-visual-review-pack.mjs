@@ -1,0 +1,21 @@
+import fs from "node:fs/promises";
+import path from "node:path";
+import {pathToFileURL} from "node:url";
+import {args,need,readJson} from "./lib/common.mjs";
+
+const a=args(),v4=path.resolve(need(a,"v4-rendered")),v5=path.resolve(need(a,"v5-rendered")),out=path.resolve(need(a,"out")),plan4=await readJson(path.resolve(need(a,"plan-v4"))),plan5=await readJson(path.resolve(need(a,"plan-v5"))),runtimeModules=process.env.RUNTIME_NODE_MODULES;
+if(!runtimeModules)throw new Error("RUNTIME_NODE_MODULES is required for sharp");
+const sharp=(await import(pathToFileURL(path.join(runtimeModules,"sharp/dist/index.mjs")).href)).default;
+await fs.mkdir(path.join(out,"details"),{recursive:true});
+const slideFile=(dir,n)=>path.join(dir,`slide-${n}.png`),svgText=(text,w,h,size=24)=>Buffer.from(`<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#F8F9FA"/><text x="20" y="${Math.round(h*.68)}" font-family="Arial" font-size="${size}" font-weight="700" fill="#202124">${String(text).replace(/&/g,"&amp;").replace(/</g,"&lt;")}</text></svg>`);
+
+async function contact(dir,target,count,label){const cols=4,cellW=320,cellH=210,thumbH=180,rows=Math.ceil(count/cols),canvas=sharp({create:{width:cols*cellW,height:rows*cellH,channels:4,background:"#E8EAED"}}),composite=[];for(let n=1;n<=count;n++){const x=((n-1)%cols)*cellW,y=Math.floor((n-1)/cols)*cellH,img=await sharp(slideFile(dir,n)).resize(cellW,thumbH,{fit:"fill"}).png().toBuffer();composite.push({input:img,left:x,top:y},{input:svgText(`${label} · ${String(n).padStart(2,"0")}`,cellW,cellH-thumbH,16),left:x,top:y+thumbH});}await canvas.composite(composite).png().toFile(target);}
+
+const count=Math.min(plan4.slides.length,plan5.slides.length);await contact(v4,path.join(out,"4.0-contact-sheet.png"),count,"Planner 4.0");await contact(v5,path.join(out,"5.0-contact-sheet.png"),count,"Planner 5.0");
+const left=await sharp(path.join(out,"4.0-contact-sheet.png")).png().toBuffer(),right=await sharp(path.join(out,"5.0-contact-sheet.png")).png().toBuffer(),lm=await sharp(left).metadata(),rm=await sharp(right).metadata();await sharp({create:{width:lm.width+rm.width,height:Math.max(lm.height,rm.height),channels:4,background:"#FFFFFF"}}).composite([{input:left,left:0,top:0},{input:right,left:lm.width,top:0}]).png().toFile(path.join(out,"side-by-side-contact-sheet.png"));
+
+const complexity=s=>(s.content?.body?.length||0)+(s.content?.bullets?.length||0)+(s.content?.items?.length||0)+(s.retainedEvidence?.length||0),candidates=[1,plan5.slides.find(s=>s.page_type==="data")?.outputSlide,plan5.slides.find(s=>s.page_type==="evidence"||s.evidence_type==="authority testimony")?.outputSlide,[...plan5.slides].sort((x,y)=>complexity(y)-complexity(x))[0]?.outputSlide,plan5.slides.find(s=>s.page_type==="chapter")?.outputSlide||plan5.slides.find(s=>s.page_type==="action")?.outputSlide].filter(Boolean),selected=[...new Set(candidates)];for(let n=1;selected.length<Math.min(5,count)&&n<=count;n++)if(!selected.includes(n))selected.push(n);
+const detailBuffers=[];
+for(const n of selected){const h=360,w=640,header=54,a4=await sharp(slideFile(v4,n)).resize(w,h,{fit:"fill"}).png().toBuffer(),a5=await sharp(slideFile(v5,n)).resize(w,h,{fit:"fill"}).png().toBuffer(),label=svgText(`Slide ${String(n).padStart(2,"0")} — Planner 4.0 vs 5.0`,w*2,header,22),target=path.join(out,"details",`slide-${String(n).padStart(2,"0")}-4-vs-5.png`);await sharp({create:{width:w*2,height:h+header,channels:4,background:"#FFFFFF"}}).composite([{input:label,left:0,top:0},{input:a4,left:0,top:header},{input:a5,left:w,top:header}]).png().toFile(target);detailBuffers.push(await sharp(target).png().toBuffer());}
+await sharp({create:{width:1280,height:detailBuffers.length*414,channels:4,background:"#FFFFFF"}}).composite(detailBuffers.map((input,index)=>({input,left:0,top:index*414}))).png().toFile(path.join(out,"details-review-board.png"));
+await fs.writeFile(path.join(out,"review-pack.json"),JSON.stringify({slides:count,detailSlides:selected,files:{v4:"4.0-contact-sheet.png",v5:"5.0-contact-sheet.png",sideBySide:"side-by-side-contact-sheet.png"}},null,2));console.log(`reviewPack=${out} slides=${count} details=${selected.join(",")}`);

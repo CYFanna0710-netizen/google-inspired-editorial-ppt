@@ -2,13 +2,13 @@
 
 ## Primary correction
 
-Treat continuous color atmosphere as a defining feature. Do not translate the reference into large adjacent color blocks. A red half beside a yellow half is not a gradient.
+Treat continuous gradients as a defining chapter and data-mark feature, not as a mandatory background for every page. Ordinary pages remain predominantly neutral and use one edge-cropped organic mesh. Do not translate the reference into large adjacent color blocks. A red half beside a yellow half is not a gradient.
 
 ## Three-layer construction
 
-1. **Base field:** use one native linear gradient across the full canvas or designated background region. Use at least three stops and a 20-40 degree direction.
-2. **Diffuse bloom:** add one or two large radial gradients with transparent outer stops. Crop them at an edge. Keep opacity low enough that text remains dominant.
-3. **Mesh texture:** add one original point/grid mesh from an edge. Let it inherit the chapter color family; never cover content.
+1. **Base field:** on chapter or closing pages, use one native linear gradient across the full canvas. Use at least three stops and a 20-40 degree direction.
+2. **Diffuse bloom:** add at most one or two radial fields only when they improve the chapter transition or closing depth.
+3. **Mesh texture:** on ordinary pages, use one original point/grid mesh from an edge. It replaces, rather than accompanies, a large diffuse background in most cases.
 
 ## Chapter sequences
 
@@ -21,8 +21,8 @@ Treat continuous color atmosphere as a defining feature. Do not translate the re
 ## Ordinary pages
 
 - Keep 70-85% neutral canvas.
-- Use a soft edge wash occupying roughly 15-30% of the canvas, not a full hard block.
-- Prefer a diffused corner glow behind a metric, image, or quote.
+- Default to no diffuse wash. Add one only when a metric, quotation, or transition needs atmospheric separation.
+- Keep any edge wash below roughly 20% of the canvas.
 - Allow a hard dark half-page only when it carries evidence or a chart.
 - Do not repeat the exact same diffusion corner on consecutive pages.
 

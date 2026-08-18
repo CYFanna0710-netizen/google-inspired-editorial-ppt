@@ -1,4 +1,4 @@
 interface:
-  display_name: "Google-Inspired Editorial PPT"
-  short_description: "将商业PPT升级为克制、高级、杂志化的编辑设计系统"
-  default_prompt: "Use $google-inspired-editorial-ppt to restyle this PowerPoint while preserving its requested content and structure."
+  display_name: "Prismatic Mesh Editorial PPT"
+  short_description: "Google Cloud演示智能：论点标题、视觉语言、证据拓扑与节奏规划"
+  default_prompt: "Use $prismatic-mesh-editorial-ppt as a Google Cloud Presentation Intelligence System: run Planner 4.0, rewrite topic labels into source-supported insight headlines, assign narrative and visual roles, plan evidence topology and deck rhythm, preserve all facts/data/sources/editable objects, generate the PPTX, render it, and pass content, layout, rhythm, style, and aesthetic QA."

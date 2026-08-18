@@ -1,0 +1,12 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Organic visual asset registry",
+  "type":"object",
+  "required":["version","selectionPolicy","assets"],
+  "properties":{
+    "version":{"type":"string"},
+    "selectionPolicy":{"enum":["semantic_and_composition_match_or_none"]},
+    "assets":{"type":"array","minItems":1,"items":{"type":"object","required":["asset_id","file_ref","family","palette","texture","particle_density","depth","perspective","preferred_role","preferred_entry_edge","safe_crop_regions","section_compatibility","hero_capability","focal_region","mass_profile","alpha","resolution","semantic_tags","rights_status","source","trademark_check"],"properties":{"asset_id":{"type":"string","minLength":1},"file_ref":{"type":"string","minLength":1},"preferred_role":{"type":"array","minItems":1},"preferred_entry_edge":{"type":"array","minItems":1},"safe_crop_regions":{"type":"array","minItems":1},"hero_capability":{"type":"boolean"},"alpha":{"type":"boolean"},"resolution":{"type":"array","minItems":2},"semantic_tags":{"type":"array","minItems":1},"rights_status":{"type":"string"},"trademark_check":{"type":"string"}},"additionalProperties":true}}
+  },
+  "additionalProperties":true
+}

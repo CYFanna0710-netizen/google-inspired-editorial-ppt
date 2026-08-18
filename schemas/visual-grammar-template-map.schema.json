@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "visual-grammar-template-map.schema.json",
+  "title": "Visual Grammar to Template Capability Map",
+  "type": "object",
+  "required": ["mapping_version", "selection_policy", "mappings"],
+  "properties": {
+    "mapping_version": {"const": "6.0-mvp-1"},
+    "selection_policy": {"const": "visual_concept_then_required_capabilities_then_template_match"},
+    "mappings": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {"$ref": "#/$defs/mapping"}
+    }
+  },
+  "$defs": {
+    "mapping": {
+      "type": "object",
+      "required": ["visual_grammar_id", "compatible_templates", "conditionally_compatible_templates", "incompatible_templates", "required_transformations", "unresolved_renderer_gaps"],
+      "properties": {
+        "visual_grammar_id": {"type": "string", "minLength": 1},
+        "compatible_templates": {"type": "array", "items": {"type": "string", "pattern": "^T(?:0[1-9]|1[0-9]|2[0-3])$"}},
+        "conditionally_compatible_templates": {"type": "array", "items": {"type": "string", "pattern": "^T(?:0[1-9]|1[0-9]|2[0-3])$"}},
+        "incompatible_templates": {"type": "array", "items": {"type": "string", "pattern": "^T(?:0[1-9]|1[0-9]|2[0-3])$"}},
+        "required_transformations": {"type": "array", "items": {"type": "string"}},
+        "unresolved_renderer_gaps": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  }
+}
