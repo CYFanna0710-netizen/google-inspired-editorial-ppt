@@ -2,7 +2,9 @@
 
 一个面向 Codex 的可运行 PPT 重组与重设计 Skill。它从 Google Cloud 企业演示中蒸馏视觉语言、排版决策和信息节奏，但不复制 Google Logo、品牌页脚、专有视觉资产或无授权字体。
 
-![Prismatic Mesh Editorial PPT 风格能力示意](docs/images/hero-moodboard.png)
+![Prismatic Mesh Editorial PPT 23页可编辑母版总览](docs/images/hero-moodboard.png)
+
+> 展示图全部来自仓库内的23页可编辑母版，不使用任何客户项目成品作为风格示例。
 
 ## 当前能力
 
@@ -64,27 +66,27 @@ communication goal
 
 Manifest 会记录每页支持的语义关系、视觉动作、Hero Object、尺度能力、空间能力、数据能力、颜色能量、使用限制和失败风险。
 
-## 设计效果示例
+## 23页母版视觉预览
 
-### 图片主导封面
+### T01 超尺度标题与边缘 Mesh
 
-![图片主导的企业编辑风封面](docs/images/example-cover.png)
+![T01 可编辑母版](docs/images/example-cover.png)
 
-### 连续渐变章节页
+### T07 连续弥散渐变章节页
 
-![带连续渐变氛围的章节页](docs/images/example-editorial-section.png)
+![T07 可编辑渐变母版](docs/images/example-editorial-section.png)
 
-### 流程与信息组织
+### T16 结构化信息序列
 
-![轻量信息卡片和流程布局](docs/images/example-process-cards.png)
+![T16 可编辑信息序列母版](docs/images/example-process-cards.png)
 
-### 长文本与观点页
+### T04 留白主导叙事页
 
-![大留白长文本编辑版式](docs/images/example-longform-layout.png)
+![T04 可编辑叙事母版](docs/images/example-longform-layout.png)
 
-### 深色视觉高潮页
+### T23 深色弥散收束页
 
-![深色电影感章节页](docs/images/example-dark-cinematic.png)
+![T23 可编辑深色母版](docs/images/example-dark-cinematic.png)
 
 ## 安装
 
